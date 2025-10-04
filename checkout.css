@@ -1,0 +1,95 @@
+
+body {
+    background: #f6fafd;
+}
+.checkout-header {
+    background: #036cb2;
+    color: #fff;
+    padding: 32px 0 16px 0;
+    text-align: center;
+}
+.checkout-steps {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+.checkout-step {
+    font-size: 1.1rem;
+    color: #b3d1e9;
+    font-weight: 500;
+    position: relative;
+}
+.checkout-step.active {
+    color: #fff;
+    font-weight: bold;
+}
+.checkout-step:not(:last-child)::after {
+    content: "\f105";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-left: 18px;
+    margin-right: 0;
+    color: #b3d1e9;
+}
+.checkout-main {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+.order-summary {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 24px;
+}
+.order-summary .list-group-item {
+    background: transparent;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+.order-summary .summary-label {
+    color: #888;
+}
+.order-summary .summary-value {
+    font-weight: 500;
+}
+.order-summary .grand-total {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #036cb2;
+}
+.order-summary .apply-coupon .form-control {
+    border-radius: 6px 0 0 6px;
+}
+.order-summary .apply-coupon .btn {
+    border-radius: 0 6px 6px 0;
+}
+.payment-section .form-check {
+    margin-bottom: 12px;
+}
+.payment-card-fields {
+    margin-top: 12px;
+}
+.position-sticky {
+    top: 24px;
+}
+@media (max-width: 991.98px) {
+    .position-sticky {
+        position: static !important;
+        top: auto !important;
+    }
+}
+@media (max-width: 576px) {
+    .checkout-header {
+        padding: 18px 0 8px 0;
+    }
+    .checkout-steps {
+        gap: 12px;
+        font-size: 0.95rem;
+    }
+    .order-summary {
+        margin-top: 32px;
+    }
+}   
