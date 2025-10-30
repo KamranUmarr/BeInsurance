@@ -3,19 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="lab1.css">
+    <title>BeInsurance</title>
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <ul class="nav-links">
+
+<header>
+    <div class="navbar-container">
+        <div class="burger-menu" id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="navbar-logo-center">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav class="nav-links" id="nav-links">
             <div class="left-menu">
                 <li class="logo">
                     <a href=""><img src="logo.png" alt=""></a>
                 </li>
             </div>
-            
             <div class="right-menu">
                 <li class="home"><a href=""><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="">Our Company</a></li>
@@ -24,9 +33,11 @@
                 <li><a href="">Contact us</a></li>
                 <li><a href="checkout.html">Cart</a></li>
             </div>
-            
-        </ul>
-    </header>
+        </nav>
+    </div>
+</header>
+
+<div class="background-fade"></div>
 
     <section class="main-section">
        <nav class="tab-menu">
@@ -50,7 +61,7 @@
         <div class="main-content">
             <div class="main-left">
                 
-                <h1 id="main-title">Insurance a home<br>or appartment</h1>
+                <h1 id="main-title">Insurance a home or appartment</h1>
                 <p id="main-desc">
                     Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae
                 </p>
@@ -73,11 +84,20 @@
                 <span>do it in just 3 simple steps</span>
             </div>
             <div class="steps">
-                <div class="step"><span>1.</span> choose an insurance for your needs</div>
-                <div class="arrow">&gt;</div>
-                <div class="step"><span>2.</span> fill simple form in 5 minutes</div>
-                <div class="arrow">&gt;</div>
-                <div class="step"><span>3.</span> pick up the best offer and that’s it</div>
+                <div class="step-wrapper">
+                    <div class="arrow">&gt;</div>
+                    <div class="step"><span>1.</span> choose an insurance for your needs</div>
+                    
+                </div>
+                <div class="step-wrapper">
+                    <div class="arrow">&gt;</div>
+                    <div class="step"><span>2.</span> fill simple form in 5 minutes</div>
+                    
+                </div>
+                <div class="step-wrapper">
+                    <div class="arrow">&gt;</div>
+                    <div class="step"><span>3.</span> pick up the best offer and that’s it</div>
+                </div>                                            
             </div>
         </div>
     </section>
@@ -87,7 +107,7 @@
             <div class="expert-box">
                 <img src="images/expert.jpg" alt="Expert" class="expert-img">
                 <div class="expert-content">
-                    <h2>Have a question?<br>Talk to our expert.</h2>
+                    <h2>Have a question? Talk to our expert.</h2>
                     <p>Quisque lorem tortor fringilla sed, eleifend justo vel bibendum sapien ac turpis.</p>
                     <button class="green-btn">
                         Start talking <i class="fa-solid fa-arrow-right"></i>
@@ -97,7 +117,7 @@
             <div class="agent-box">
                 <img src="images/map.jpg" alt="Map" class="agent-img">
                 <div class="agent-content">
-                    <h2>Find an agent<br>close to your home.</h2>
+                    <h2>Find an agent close to your home.</h2>
                     <p>Nulla imperdiet sit amet magna. Vesti bulum dapibus, mauris nec males.</p>
                     <button class="green-btn">
                         Find now <i class="fa-solid fa-magnifying-glass"></i>
@@ -182,5 +202,16 @@
         </div>
     </footer>
     <script src="index.js"></script>
+
+    <div class="floating-badges">
+        <div class="badge badge-black">
+            <span>700+<br><small>websites</small></span>
+        </div>
+        <div class="badge badge-green">
+            <i class="fa fa-shopping-bag"></i>
+            <span>Buy now</span>
+        </div>
+    </div>
+    
 </body>
 </html>
