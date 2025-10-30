@@ -40,44 +40,105 @@
 <div class="background-fade"></div>
 
     <section class="main-section">
-       <nav class="tab-menu">
-            <a href="#" class="tab active"
-                data-title="Insurance a home<br>or appartment"
-                data-desc="Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae"
-                data-img="images/family.jpg">For journey</a>
-            <a href="#" class="tab"
-                data-title="Quisque lorem<br>tortor fringilla sed"
-                data-desc="Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi iquam eret."
-                data-img="images/car.jpg">For a car</a>
-            <a href="#" class="tab"
-                data-title="Qum penatibus<br>ultrices volutpat et"
-                data-desc="Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrice."
-                data-img="images/life.jpg">For life</a>
-            <a href="#" class="tab"
-                data-title="In hendrerit nulla<br>qcongue accumsan"
-                data-desc="Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim fermentum in."
-                data-img="images/house.jpg">For a house</a>
-        </nav>
-        <div class="main-content">
-            <div class="main-left">
-                
-                <h1 id="main-title">Insurance a home or appartment</h1>
-                <p id="main-desc">
-                    Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae
-                </p>
-                <button class="start-btn">
-                    Start insurance <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <div class="links-row">
-                    <a href="#">Frequently asked questions</a>
-                    <a href="#">Read more</a>
-                    <a href="#">Contact us</a>
+    <div class="tabbed">
+
+        <input type="radio" name="tab" id="tab1" checked>
+        <input type="radio" name="tab" id="tab2">
+        <input type="radio" name="tab" id="tab3">
+        <input type="radio" name="tab" id="tab4">
+
+        <div class="tab-menu">
+            <label class="tab" for="tab1">For journey</label>
+            <label class="tab" for="tab2">For a car</label>
+            <label class="tab" for="tab3">For life</label>
+            <label class="tab" for="tab4">For a house</label>
+        </div>
+
+        <div class="tab-content tab-content1">
+            <div class="main-content">
+                <div class="main-left">
+                    <h1>Insurance a home or appartment</h1>
+                    <p>
+                        Nullam wisi ultricies a, gravida vitae, dapibus risus ante sodales lectus blandit eu, tempor diam pede cursus vitae
+                    </p>
+                    <button class="start-btn">
+                        Start insurance <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <div class="links-row">
+                        <a href="#">Frequently asked questions</a>
+                        <a href="#">Read more</a>
+                        <a href="#">Contact us</a>
+                    </div>
+                </div>
+                <div class="main-right">
+                    <img src="images/family.jpg" alt="Family" class="main-img">
                 </div>
             </div>
-            <div class="main-right">
-                <img src="images/family.jpg" alt="Family" class="main-img" id="main-img">
+        </div>
+        <div class="tab-content tab-content2">
+            <div class="main-content">
+                <div class="main-left">
+                    <h1>Quisque lorem<br>tortor fringilla sed</h1>
+                    <p>
+                        Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi iquam eret.
+                    </p>
+                    <button class="start-btn">
+                        Start insurance <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <div class="links-row">
+                        <a href="#">Frequently asked questions</a>
+                        <a href="#">Read more</a>
+                        <a href="#">Contact us</a>
+                    </div>
+                </div>
+                <div class="main-right">
+                    <img src="images/car.jpg" alt="Car" class="main-img">
+                </div>
             </div>
         </div>
+        <div class="tab-content tab-content3">
+            <div class="main-content">
+                <div class="main-left">
+                    <h1>Qum penatibus<br>ultrices volutpat et</h1>
+                    <p>
+                        Integer ultrices posuere cubilia Curae, Nulla ipsum dolor lacus, suscipit adipiscing. Cum sociis natoque penatibus et ultrice.
+                    </p>
+                    <button class="start-btn">
+                        Start insurance <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <div class="links-row">
+                        <a href="#">Frequently asked questions</a>
+                        <a href="#">Read more</a>
+                        <a href="#">Contact us</a>
+                    </div>
+                </div>
+                <div class="main-right">
+                    <img src="images/life.jpg" alt="Life" class="main-img">
+                </div>
+            </div>
+        </div>
+        <div class="tab-content tab-content4">
+            <div class="main-content">
+                <div class="main-left">
+                    <h1>In hendrerit nulla<br>qcongue accumsan</h1>
+                    <p>
+                        Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim fermentum in.
+                    </p>
+                    <button class="start-btn">
+                        Start insurance <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <div class="links-row">
+                        <a href="#">Frequently asked questions</a>
+                        <a href="#">Read more</a>
+                        <a href="#">Contact us</a>
+                    </div>
+                </div>
+                <div class="main-right">
+                    <img src="images/house.jpg" alt="House" class="main-img">
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="how-it-works">
             <div class="how-title">
                 <strong>How it works?</strong><br>
@@ -201,7 +262,6 @@
             </span>
         </div>
     </footer>
-    <script src="index.js"></script>
 
     <div class="floating-badges">
         <div class="badge badge-black">
@@ -212,6 +272,6 @@
             <span>Buy now</span>
         </div>
     </div>
-    
+
 </body>
 </html>

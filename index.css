@@ -213,6 +213,56 @@ header {
     margin-bottom: -40px;
 }
 
+.tabbed {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabbed .tab {
+    display: inline-block;
+    
+}
+
+.tabbed input[type="radio"] {
+    display: none;
+}
+
+
+.tab-content {
+    display: none;
+}
+
+
+#tab1:checked ~ .tab-content1,
+#tab2:checked ~ .tab-content2,
+#tab3:checked ~ .tab-content3,
+#tab4:checked ~ .tab-content4 {
+    display: block;
+}
+
+
+.tab-menu label {
+    cursor: pointer;
+    padding: 18px 36px;
+    color: #001e63;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    border-bottom: 3px solid transparent;
+    transition: border 0.2s, color 0.2s;
+    background: #3a3a3a13;
+    margin-right: 2px;
+}
+
+#tab1:checked ~ .tab-menu label[for="tab1"],
+#tab2:checked ~ .tab-menu label[for="tab2"],
+#tab3:checked ~ .tab-menu label[for="tab3"],
+#tab4:checked ~ .tab-menu label[for="tab4"] {
+    color: #009ee3;
+    border-bottom: 3px solid #009ee3;
+    background: #fff;
+}
+
 .how-it-works {
     background: #0168b0;
     color: #fff;
