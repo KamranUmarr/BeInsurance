@@ -1,5 +1,4 @@
 $(function () {
-    // Burger menu for mobile
     const burger = $('#burger-menu');
     const navLinks = $('#nav-links');
     burger.on('click', function () {
@@ -13,7 +12,6 @@ $(function () {
         }
     });
 
-    // CRUD logic with Fake Store API
     const API_URL = 'https://fakestoreapi.com/products';
     const $grid = $('#productsGrid');
     const $form = $('#productForm');
@@ -22,7 +20,6 @@ $(function () {
     let editingId = null;
     let products = [];
 
-    // Utility: Show alert
     function showAlert(msg, type = 'success') {
         $alert.html(`<div class="alert alert-${type} alert-dismissible fade show" role="alert">
             <i class="fa fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>${msg}
@@ -35,7 +32,6 @@ $(function () {
         $loading.toggle(state);
     }
 
-    // READ: Load products
     function loadProducts() {
         setLoading(true);
         $.get(API_URL)
@@ -54,7 +50,6 @@ $(function () {
             return;
         }
         products.slice(0, 12).forEach(product => {
-            // Truncate description to 100 chars
             let desc = product.description || '';
             if (desc.length > 100) desc = desc.substring(0, 100) + '...';
             
@@ -80,7 +75,6 @@ $(function () {
 
     loadProducts();
 
-    // IMAGE PREVIEW
     $('#image').on('change', function () {
         const file = this.files[0];
         if (file) {
@@ -94,7 +88,6 @@ $(function () {
         }
     });
 
-    // CREATE & UPDATE
     $form.on('submit', function (e) {
         e.preventDefault();
         const title = $('#title').val().trim();
@@ -108,7 +101,6 @@ $(function () {
         setLoading(true);
 
         if (editingId) {
-            // UPDATE
             $.ajax({
                 url: `${API_URL}/${editingId}`,
                 method: 'PUT',
@@ -127,7 +119,6 @@ $(function () {
                 complete: () => setLoading(false)
             });
         } else {
-            // CREATE
             $.ajax({
                 url: API_URL,
                 method: 'POST',
@@ -147,7 +138,6 @@ $(function () {
         }
     });
 
-    // EDIT: Prefill form
     $grid.on('click', '.editBtn', function () {
         const $card = $(this).closest('.product-card');
         editingId = $card.data('id');
@@ -166,7 +156,6 @@ $(function () {
         $('html,body').animate({scrollTop: $('.form-container').offset().top - 100}, 400);
     });
 
-    // CANCEL edit
     $('#cancelEditBtn').on('click', function () {
         resetForm();
     });
@@ -181,7 +170,6 @@ $(function () {
         $('#cancelEditBtn').addClass('d-none');
     }
 
-    // DELETE
     $grid.on('click', '.deleteBtn', function () {
         const $card = $(this).closest('.product-card');
         const id = $card.data('id');
