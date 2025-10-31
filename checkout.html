@@ -13,7 +13,7 @@
         <ul class="nav-links">
             <div class="left-menu">
                 <li class="logo">
-                    <a href=""><img src="logo.png" alt=""></a>
+                    <a href="index.html"><img src="logo.png" alt=""></a>
                 </li>
             </div>
             
@@ -22,7 +22,7 @@
                 <li><a href="">Our Company</a></li>
                 <li><a href="">Insurance</a></li>
                 <li><a href="">For business</a></li>
-                <li><a href="">Contact us</a></li>
+                <li><a href="shop.html">Shop</a></li>
                 <li><a href="checkout.html">Cart</a></li>
             </div>
             
@@ -123,19 +123,13 @@
                         <div class="card mb-4 payment-section">
                             <div class="card-body">
                                 <h4 class="mb-3" style="color:#002060;">Payment</h4>
-                                <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="paymentMethod" id="payCard" value="card" checked>
-                                        <label class="form-check-label" for="payCard">Credit/Debit Card</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="paymentMethod" id="payCOD" value="cod">
-                                        <label class="form-check-label" for="payCOD">Cash on Delivery</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="paymentMethod" id="payWallet" value="wallet">
-                                        <label class="form-check-label" for="payWallet">Wallet</label>
-                                    </div>
+                                <div class="payment-methods">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="payCard" value="card" checked>
+                                    <label class="form-check-label" for="payCard">Credit/Debit Card</label>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="payCOD" value="cod">
+                                    <label class="form-check-label" for="payCOD">Cash on Delivery</label>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="payWallet" value="wallet">
+                                    <label class="form-check-label" for="payWallet">Wallet</label>
                                 </div>
                                 
                                 <div class="payment-card-fields mt-3" id="cardFields">

@@ -25,14 +25,7 @@ body {
     color: #fff;
     font-weight: bold;
 }
-.checkout-step:not(:last-child)::after {
-    content: "\f105";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    margin-left: 18px;
-    margin-right: 0;
-    color: #b3d1e9;
-}
+
 .checkout-main {
     margin-top: 32px;
     margin-bottom: 32px;
@@ -72,10 +65,13 @@ body {
 .payment-card-fields {
     margin-top: 12px;
 }
+#payCard:checked ~ #cardFields {
+    display: block;
+}   
 .position-sticky {
     top: 24px;
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1000px) {
     .position-sticky {
         position: static !important;
         top: auto !important;

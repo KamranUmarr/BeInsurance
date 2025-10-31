@@ -1,8 +1,5 @@
-// ...existing code...
-// Remove previous code, replace with the following:
-
 $(function () {
-    // Bootstrap validation fallback for browsers without HTML5 validation
+    
     function validateField($input, valid, message) {
         if (valid) {
             $input.removeClass('is-invalid').addClass('is-valid');
@@ -15,8 +12,7 @@ $(function () {
 
     function validateForm() {
         let valid = true;
-
-        // Full Name
+        
         const $fullname = $('#fullname');
         const fullnameVal = $fullname.val().trim();
         if (fullnameVal.length < 3) {
@@ -26,7 +22,6 @@ $(function () {
             validateField($fullname, true, '');
         }
 
-        // Email
         const $email = $('#email');
         const emailVal = $email.val().trim();
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -36,8 +31,7 @@ $(function () {
         } else {
             validateField($email, true, '');
         }
-
-        // Phone
+        
         const $phone = $('#phone');
         const phoneVal = $phone.val().replace(/\D/g, '');
         if (phoneVal.length < 10) {
@@ -47,7 +41,6 @@ $(function () {
             validateField($phone, true, '');
         }
 
-        // Address
         const $address = $('#address');
         if ($address.val().trim() === '') {
             validateField($address, false, 'Please enter your address.');
@@ -56,7 +49,6 @@ $(function () {
             validateField($address, true, '');
         }
 
-        // City
         const $city = $('#city');
         if ($city.val().trim() === '') {
             validateField($city, false, 'Please enter your city.');
@@ -65,7 +57,6 @@ $(function () {
             validateField($city, true, '');
         }
 
-        // Postal Code
         const $postal = $('#postal');
         const postalVal = $postal.val().trim();
         if (!/^\d{4,6}$/.test(postalVal)) {
@@ -74,8 +65,7 @@ $(function () {
         } else {
             validateField($postal, true, '');
         }
-
-        // Country
+        
         const $country = $('#country');
         if (!$country.val() || $country.val() === '') {
             $country.removeClass('is-valid').addClass('is-invalid');
@@ -86,7 +76,6 @@ $(function () {
             $country.parent().find('.invalid-feedback').text('');
         }
 
-        // Payment Method
         const $payment = $('input[name="paymentMethod"]:checked');
         if ($payment.length === 0) {
             $('input[name="paymentMethod"]').addClass('is-invalid');
@@ -95,9 +84,8 @@ $(function () {
             $('input[name="paymentMethod"]').removeClass('is-invalid');
         }
 
-        // Card fields (if Card selected)
         if ($('#payCard').is(':checked')) {
-            // Cardholder Name
+            
             const $cardName = $('#cardName');
             if ($cardName.val().trim().length < 3) {
                 validateField($cardName, false, 'Enter cardholder name.');
@@ -105,7 +93,7 @@ $(function () {
             } else {
                 validateField($cardName, true, '');
             }
-            // Card Number
+            
             const $cardNumber = $('#cardNumber');
             const cardNumVal = $cardNumber.val().replace(/\s/g, '');
             if (!/^\d{13,19}$/.test(cardNumVal)) {
@@ -114,7 +102,7 @@ $(function () {
             } else {
                 validateField($cardNumber, true, '');
             }
-            // Expiry
+            
             const $cardExpiry = $('#cardExpiry');
             if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test($cardExpiry.val())) {
                 validateField($cardExpiry, false, 'MM/YY');
@@ -122,7 +110,7 @@ $(function () {
             } else {
                 validateField($cardExpiry, true, '');
             }
-            // CVV
+            
             const $cardCVV = $('#cardCVV');
             if (!/^\d{3,4}$/.test($cardCVV.val())) {
                 validateField($cardCVV, false, 'CVV');
@@ -132,7 +120,7 @@ $(function () {
             }
         }
 
-        // Terms
+        
         const $terms = $('#termsCheck');
         if (!$terms.is(':checked')) {
             $terms.addClass('is-invalid');
@@ -146,14 +134,14 @@ $(function () {
         return valid;
     }
 
-    // Remove error on input
+    
     $('input, select').on('input change', function () {
         if ($(this).hasClass('is-invalid')) {
             validateForm();
         }
     });
 
-    // Hide error on terms check
+    
     $('#termsCheck').on('change', function () {
         if ($(this).is(':checked')) {
             $(this).removeClass('is-invalid');
@@ -162,7 +150,7 @@ $(function () {
         $('#placeOrderBtn').prop('disabled', !this.checked);
     });
 
-    // Payment method toggle
+    
     $('input[name="paymentMethod"]').on('change', function () {
         if ($('#payCard').is(':checked')) {
             $('#cardFields').show();
@@ -174,25 +162,25 @@ $(function () {
         }
     }).trigger('change');
 
-    // Card number mask
+    
     $('#cardNumber').on('input', function () {
         let val = $(this).val().replace(/\D/g, '').slice(0, 16);
         $(this).val(val.replace(/(.{4})/g, '$1 ').trim());
     });
 
-    // Card expiry mask
+    
     $('#cardExpiry').on('input', function () {
         let val = $(this).val().replace(/\D/g, '').slice(0, 4);
         if (val.length > 2) val = val.slice(0, 2) + '/' + val.slice(2);
         $(this).val(val);
     });
 
-    // On submit
+    
     $('.needs-validation').on('submit', function (e) {
         if (!validateForm()) {
             e.preventDefault();
             e.stopPropagation();
-            // Scroll to first error
+            
             const $firstError = $('.is-invalid:visible').first();
             if ($firstError.length) {
                 $('html,body').animate({
@@ -201,6 +189,10 @@ $(function () {
                     $firstError.focus();
                 });
             }
+        } else {
+            e.preventDefault();
+            alert('Order placed successfully!');
+            window.location.href = 'index.html'; 
         }
     });
 });
