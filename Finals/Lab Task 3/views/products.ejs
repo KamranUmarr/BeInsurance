@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Shop' }) %>
+    <link rel="stylesheet" href="/css/shop.css">
+</head>
+<body>
+    
+    <%- include('partials/navbar') %>
+    <div class="background-fade"></div>
+
+    <section class="crud-section">
+        <div class="section-header">
+            <h2><i class="fa fa-shop me-2"></i>Shop Products</h2>
+            <p class="text-muted">Manage your product inventory with ease</p>
+        </div>
+        
+        <div id="alert-area"></div>
+
+        <div class="form-container">
+            <h5 class="form-heading"><i class="fa fa-plus-circle me-2"></i><span id="formTitle">Add New Product</span></h5>
+            <form id="productForm" class="crud-form">
+                <input type="hidden" id="productId">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="title" class="form-label">Product Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter product name" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="price" class="form-label">Price ($)</label>
+                        <input type="number" class="form-control" id="price" placeholder="0.00" min="0" step="0.01" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" required>
+                            <option value="" disabled selected>Select category</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="jewelery">Jewelery</option>
+                            <option value="men's clothing">Men's Clothing</option>
+                            <option value="women's clothing">Women's Clothing</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="2" placeholder="Product description..." required></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="image" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="image" accept="image/*">
+                        <small class="text-muted">Upload a product image (optional)</small>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end justify-content-start">
+                        <img id="previewImg" src="" alt="" class="img-preview">
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary me-2" id="saveBtn">
+                            <i class="fa fa-save me-1"></i>Add Product
+                        </button>
+                        <button type="button" class="btn btn-secondary d-none" id="cancelEditBtn">
+                            <i class="fa fa-times me-1"></i>Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div id="loading" class="text-center my-5" style="display:none;">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+            <p class="mt-3 text-muted">Loading products...</p>
+        </div>
+
+        <div class="products-container">
+            <div class="row g-4" id="productsGrid">
+                <!-- Products loaded via JS -->
+            </div>
+        </div>
+    </section>
+
+    <div class="floating-badges">
+        <div class="badge badge-black"><span>700+<br><small>websites</small></span></div>
+        <div class="badge badge-green"><i class="fa fa-shopping-bag"></i><span>Buy now</span></div>
+    </div>
+
+    <%- include('partials/footer') %>
+    <script src="/js/shop.js"></script>
+</body>
+</html>

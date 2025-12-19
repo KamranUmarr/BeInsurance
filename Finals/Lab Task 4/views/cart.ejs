@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Checkout' }) %>
+    <link rel="stylesheet" href="/css/checkout.css">
+</head>
+<body>
+    
+    <%- include('partials/navbar') %>
+
+    <!-- Unique Checkout Sub-Header -->
+    <header class="checkout-header">
+        <h1 class="mb-2" style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; letter-spacing: 1px;">
+            Checkout
+        </h1>
+        <nav aria-label="Checkout steps" class="checkout-steps">
+            <span class="checkout-step">Cart</span>
+            <span class="checkout-step">Address</span>
+            <span class="checkout-step">Payment</span>
+            <span class="checkout-step active">Review</span>
+        </nav>
+    </header>
+
+    <main class="checkout-main">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-7">
+                    <form class="needs-validation" novalidate>
+                        <!-- Customer Info -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h4 class="mb-3" style="color:#002060;">Customer & Shipping</h4>
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="fullname" placeholder="Full Name" required>
+                                            <label for="fullname">Full Name</label>
+                                            <div class="invalid-feedback">Please enter your full name.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                                            <label for="email">Email</label>
+                                            <div class="invalid-feedback">Please enter a valid email.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-floating">
+                                            <input type="tel" class="form-control" id="phone" placeholder="Phone" required pattern="^[0-9+\s()-]{7,}$">
+                                            <label for="phone">Phone</label>
+                                            <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="address" placeholder="Address" required>
+                                            <label for="address">Address</label>
+                                            <div class="invalid-feedback">Please enter your address.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="city" placeholder="City" required>
+                                            <label for="city">City</label>
+                                            <div class="invalid-feedback">Please enter your city.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="postal" placeholder="Postal Code" required pattern="^[A-Za-z0-9\s\-]{3,10}$">
+                                            <label for="postal">Postal Code</label>
+                                            <div class="invalid-feedback">Enter postal code.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="country" required>
+                                                <option value="">Choose...</option>
+                                                <option>Pakistan</option>
+                                                <option>USA</option>
+                                                <option>UK</option>
+                                            </select>
+                                            <label for="country">Country</label>
+                                            <div class="invalid-feedback">Select a country.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Payment Info -->
+                        <div class="card mb-4 payment-section">
+                            <div class="card-body">
+                                <h4 class="mb-3" style="color:#002060;">Payment</h4>
+                                <div class="payment-methods">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="payCard" value="card" checked>
+                                    <label class="form-check-label" for="payCard">Credit/Debit Card</label>
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="payCOD" value="cod">
+                                    <label class="form-check-label" for="payCOD">Cash on Delivery</label>
+                                </div>
+                                
+                                <div class="payment-card-fields mt-3" id="cardFields">
+                                    <div class="row g-3">
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="cardName" placeholder="Cardholder Name" required>
+                                                <label for="cardName">Cardholder Name</label>
+                                                <div class="invalid-feedback">Enter cardholder name.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="cardNumber" placeholder="Card Number" required>
+                                                <label for="cardNumber">Card Number</label>
+                                                <div class="invalid-feedback">Enter valid card number.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY" required>
+                                                <label for="cardExpiry">MM/YY</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-floating">
+                                                <input type="password" class="form-control" id="cardCVV" placeholder="CVV" required>
+                                                <label for="cardCVV">CVV</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                    <label class="form-check-label" for="termsCheck">
+                                        I agree to the <a href="#" tabindex="0">terms and conditions</a>.
+                                    </label>
+                                    <div class="invalid-feedback">You must agree before placing order.</div>
+                                </div>
+                                <button class="btn btn-primary w-100" type="submit" id="placeOrderBtn" disabled>Place Order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="col-12 col-md-5">
+                    <div class="order-summary position-sticky">
+                        <h4 class="mb-3" style="color:#002060;">Order Summary</h4>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Insurance Plan A</span>
+                                <span class="text-nowrap">1 × <span class="summary-value">₨12,000</span></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Accident Cover</span>
+                                <span class="text-nowrap">1 × <span class="summary-value">₨2,500</span></span>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="summary-label">Subtotal</span>
+                            <span class="summary-value">₨14,500</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="grand-total">Grand Total</span>
+                            <span class="grand-total">₨15,200</span>
+                        </div>                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script src="/js/checkout.js"></script>
+</body>
+</html>

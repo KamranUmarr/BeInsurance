@@ -1,0 +1,23 @@
+# 1. Dependencies (Crucial)
+# Contains heavy library code. We never push this.
+# Teammates recreate it using 'npm install' based on package.json
+node_modules/
+
+# 2. Environment Variables (Security)
+# Keeps database passwords and API keys off GitHub.
+.env
+
+# 3. Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# 4. Operating System Files
+.DS_Store
+Thumbs.db
+
+# 5. Editor/IDE Settings
+.vscode/
+.idea/

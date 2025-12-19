@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head', { title: 'Shop' }) %>
+    <link rel="stylesheet" href="/css/shop.css">
+</head>
+<body>
+    
+    <%- include('partials/navbar') %>
+    <div class="background-fade"></div>
+
+    <section class="crud-section">
+        <div class="section-header">
+            <h2><i class="fa fa-shop me-2"></i>Shop Products</h2>
+            <p class="text-muted">Manage your product inventory with ease</p>
+        </div>
+
+        <!-- 1. FILTER FORM (Sends GET request to /products) -->
+        <div class="card mb-4 p-3 bg-light border-0">
+            <form action="/products" method="GET" class="row g-3">
+                <div class="col-md-4">
+                    <select name="category" class="form-select">
+                        <option value="">All Categories</option>
+                        <!-- Check if category was selected to keep it selected -->
+                        <option value="electronics" <%= filterParams.category === 'electronics' ? 'selected' : '' %>>Electronics</option>
+                        <option value="jewelery" <%= filterParams.category === 'jewelery' ? 'selected' : '' %>>Jewelery</option>
+                        <option value="men's clothing" <%= filterParams.category === "men's clothing" ? 'selected' : '' %>>Men's Clothing</option>
+                        <option value="women's clothing" <%= filterParams.category === "women's clothing" ? 'selected' : '' %>>Women's Clothing</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="number" name="min" class="form-control" placeholder="Min Price" value="<%= filterParams.min || '' %>">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" name="max" class="form-control" placeholder="Max Price" value="<%= filterParams.max || '' %>">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100">Filter</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 2. PRODUCT LOOP (Server-Side Rendering) -->
+        <div class="products-container">
+            <div class="row g-4" id="productsGrid">
+                <% if(products.length > 0) { %>
+                    <% products.forEach(product => { %>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card product-card h-100">
+                                <img src="<%= product.image %>" class="card-img-top" alt="<%= product.title %>">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="category"><%= product.category %></div>
+                                    <h5 class="card-title"><%= product.title %></h5>
+                                    <div class="price">$<%= product.price.toFixed(2) %></div>
+                                    <p class="card-text text-truncate"><%= product.description.substring(0, 80) %>...</p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <div class="col-12 text-center text-muted py-5">
+                        <h3>No products found matching your criteria.</h3>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- 3. PAGINATION CONTROLS -->
+        <% if (totalPages > 1) { %>
+            <nav aria-label="Page navigation" class="mt-5">
+                <ul class="pagination justify-content-center">
+                    
+                    <!-- Previous Button -->
+                    <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+                        <a class="page-link" href="/products?page=<%= currentPage - 1 %>&category=<%= filterParams.category %>&min=<%= filterParams.min %>&max=<%= filterParams.max %>">Previous</a>
+                    </li>
+
+                    <!-- Page Numbers -->
+                    <% for(let i = 1; i <= totalPages; i++) { %>
+                        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+                            <a class="page-link" href="/products?page=<%= i %>&category=<%= filterParams.category %>&min=<%= filterParams.min %>&max=<%= filterParams.max %>"><%= i %></a>
+                        </li>
+                    <% } %>
+
+                    <!-- Next Button -->
+                    <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+                        <a class="page-link" href="/products?page=<%= currentPage + 1 %>&category=<%= filterParams.category %>&min=<%= filterParams.min %>&max=<%= filterParams.max %>">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>
+
+    </section>
+
+    <div class="floating-badges">
+        <div class="badge badge-black"><span>700+<br><small>websites</small></span></div>
+        <div class="badge badge-green"><i class="fa fa-shopping-bag"></i><span>Buy now</span></div>
+    </div>
+
+    <%- include('partials/footer') %>
+    
+    <!-- IMPORTANT: I commented out shop.js because we are now using Database data, not API data -->
+    <!-- <script src="/js/shop.js"></script> -->
+</body>
+</html>
