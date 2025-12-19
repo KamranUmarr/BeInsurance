@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head', { title: 'Order Preview' }) %>
+    <link rel="stylesheet" href="/css/checkout.css">
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container mt-5 mb-5">
+        <h2 class="mb-4 text-center">Order Preview</h2>
+
+        <div class="row">
+            <!-- Customer Details -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">Shipping Details</div>
+                    <div class="card-body">
+                        <p><strong>Name:</strong> <%= customer.fullname %></p>
+                        <p><strong>Email:</strong> <%= customer.email %></p>
+                        <p><strong>Phone:</strong> <%= customer.phone %></p>
+                        <p><strong>Address:</strong> <%= customer.address %>, <%= customer.city %>, <%= customer.country %></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Items -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">Order Summary</div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% items.forEach(item => { %>
+                                <tr>
+                                    <td><%= item.title %></td>
+                                    <td><%= item.quantity %></td>
+                                    <td>$<%= item.price %></td>
+                                    <td>$<%= item.total %></td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <hr>
+                        
+                        <!-- NEW: Price Breakdown -->
+                        <div class="d-flex justify-content-between">
+                            <span>Subtotal:</span>
+                            <span>$<%= subTotal.toFixed(2) %></span>
+                        </div>
+
+                        <% if(discountAmount > 0) { %>
+                            <div class="d-flex justify-content-between text-success fw-bold">
+                                <span>Discount (<%= discountCode %>):</span>
+                                <span>-$<%= discountAmount.toFixed(2) %></span>
+                            </div>
+                        <% } %>
+
+                        <div class="d-flex justify-content-between fs-4 fw-bold mt-2">
+                            <span>Grand Total:</span>
+                            <span>$<%= grandTotal.toFixed(2) %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex justify-content-between mt-4">
+            <!-- Back Button -->
+            <button onclick="history.back()" class="btn btn-outline-secondary">
+                <i class="fa fa-arrow-left"></i> Go Back to Cart
+            </button>
+
+            <!-- Confirm Form -->
+            <form action="/order/confirm" method="POST">
+                <!-- THE TRICK: Pass all data as a JSON string in a hidden input -->
+                <input type="hidden" name="orderData" value='<%= JSON.stringify({ customer, items, totalAmount: grandTotal, status: "Placed" }) %>'>
+                
+                <button type="submit" class="btn btn-success btn-lg">
+                    Confirm & Place Order <i class="fa fa-check"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

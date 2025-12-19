@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head', { title: 'My Orders' }) %>
+    <link rel="stylesheet" href="/css/checkout.css"> <!-- Reusing existing styles -->
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4"><i class="fa fa-history"></i> Order History</h2>
+
+        <!-- 1. THE SEARCH FORM -->
+        <!-- Logic: It submits a GET request to the same page -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6">
+                <form action="/order/my-orders" method="GET" class="card p-4 shadow-sm">
+                    <div class="mb-3">
+                        <label class="form-label">Find by Email Address</label>
+                        <div class="input-group">
+                            <input type="email" name="email" class="form-control" 
+                                   placeholder="e.g. john@example.com" 
+                                   value="<%= searchedEmail || '' %>" required>
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 2. THE RESULTS TABLE -->
+        <!-- Only show if orders is not null (meaning a search happened) -->
+        <% if (orders) { %>
+            
+            <% if (orders.length > 0) { %>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-muted mb-3">Found <%= orders.length %> order(s) for "<%= searchedEmail %>"</h5>
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Total</th>
+                                        <th>Items</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% orders.forEach(order => { %>
+                                    <tr>
+                                        <!-- ID: Mongoose IDs are objects, usually cast to string for display -->
+                                        <td><small class="text-muted">#<%= order._id.toString().slice(-6) %></small></td>
+                                        
+                                        <!-- DATE FORMATTING -->
+                                        <td>
+                                            <i class="fa fa-calendar-alt text-muted me-1"></i>
+                                            <%= order.date.toDateString() %>
+                                        </td>
+                                        
+                                        <!-- STATUS BADGE LOGIC -->
+                                        <td>
+                                            <% if (order.status === 'Placed') { %>
+                                                <span class="badge bg-primary">Placed</span>
+                                            <% } else if (order.status === 'Processing') { %>
+                                                <span class="badge bg-warning text-dark">Processing</span>
+                                            <% } else { %>
+                                                <span class="badge bg-success">Delivered</span>
+                                            <% } %>
+                                        </td>
+                                        
+                                        <td class="fw-bold">$<%= order.totalAmount.toFixed(2) %></td>
+                                        
+                                        <td>
+                                            <ul class="list-unstyled mb-0 small">
+                                                <% order.items.forEach(item => { %>
+                                                    <li>• <%= item.title %> (x<%= item.quantity %>)</li>
+                                                <% }) %>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <!-- Search happened, but no results -->
+                <div class="text-center text-muted py-5">
+                    <i class="fa fa-search fa-3x mb-3"></i>
+                    <h4>No orders found for this email.</h4>
+                </div>
+            <% } %>
+
+        <% } %>
+    </div>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
