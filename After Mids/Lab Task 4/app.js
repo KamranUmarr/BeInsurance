@@ -24,11 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', adminRoutes);
 app.use('/', mainRoutes);
 
-
-app.get('/cart', (req, res) => {
-    res.render('cart');
-});
-
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
